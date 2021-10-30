@@ -1,0 +1,6 @@
+.calva/
+.clj-kondo/
+.lsp/
+.nrepl-port
+.cpcache/
+src/aoc/input*.txt
