@@ -41,8 +41,10 @@
      (reduce * 1))
 
 ;; part 2
+(defn to-ascii [s]
+  (mapv int (seq s)))
 (def extra [17 31 73 47 23])
-(def p2 (into (mapv int (seq input)) extra))
+(def p2 (into (to-ascii input) extra))
 
 (defn dense [coll]
   (->> (partition 16 coll)
@@ -53,9 +55,11 @@
 (comment
   (dense (range 32)))
 
-(defn solve-p2 [coll lengths]
-  (let [ls' (apply concat (repeat 64 lengths))]
+(defn solve-p2 [s]
+  (let [lengths (into (to-ascii s) extra)
+        coll (vec (range 256))
+        ls' (apply concat (repeat 64 lengths))]
     (-> (solve coll 0 0 ls')
         dense)))
 
-(solve-p2 (vec (range 256)) p2)
+(solve-p2 input)
