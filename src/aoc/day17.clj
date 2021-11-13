@@ -49,14 +49,14 @@
       val-after-0
       (let [index-to-insert (mod (+ step cur-index) length)]
         (cond
-          (= index-to-insert zero-index)
-          (recur zero-index next-val (inc length) (inc next-val) (inc zero-index))
-
           (> index-to-insert zero-index)
           (recur zero-index val-after-0 (inc length) (inc next-val) (inc index-to-insert))
 
           (< index-to-insert zero-index)
-          (recur (inc zero-index) val-after-0 (inc length) (inc next-val) (inc index-to-insert)))))))
+          (recur (inc zero-index) val-after-0 (inc length) (inc next-val) (inc index-to-insert))
+
+          (= index-to-insert zero-index)
+          (recur zero-index next-val (inc length) (inc next-val) (inc zero-index)))))))
 
 (comment
   ;; verify the algorithm
